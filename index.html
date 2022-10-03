@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Random Name Selector Using Vanilla JavaScript. ATDilshan, @atdilshan.github.io, end-to-end-chat-app.herokuapp.com"
+    />
+    <meta
+      name="keywords"
+      content="Random Name Selector, Vanilla JavaScript Project, AT Dilshan, github atdilshan, dilshan portfolio, portfolio atdilshan,"
+    />
+    <meta name="author" content="AT Dilshan" />
+    <title>Random Name Selector - atdilshan.github.io</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="head">
+        <div class="title">Random Name Selector</div>
+        <div class="credit">
+          Created By 💕<span class="text-danger">AT Dilshan</span>💕
+        </div>
+      </div>
+
+      <input type="submit" value="Start" id="btn1" onclick="btn1()" />
+
+      <div class="timer-container" id="timer-container">
+        <div id="timer"></div>
+      </div>
+      <div id="today"></div>
+      <div class="stu-container" id="stu-container">
+        <div id="stuId"></div>
+        <div id="stuName"></div>
+      </div>
+      <input type="submit" value="Refresh" id="btn2" onclick="btn1()" />
+      <input
+        type="submit"
+        value="Select a topic >>>"
+        id="btn3"
+        onclick="btn3()"
+      />
+
+      <div class="timer-container" id="timer-container2">
+        <div class="timer" id="timer2"></div>
+      </div>
+      <div class="topic" id="topic-head"></div>
+      <div class="topic" id="topic"></div>
+
+      <input type="submit" value="Refresh" id="btn4" onclick="btn3()" />
+    </div>
+
+    <script>
+      var dTime = 2;
+      var x = dTime;
+
+      function btn1() {
+        document.getElementById("today").style.display = "none";
+        document.getElementById("stu-container").style.display = "none";
+        document.getElementById("btn2").style.display = "none";
+        document.getElementById("btn3").style.display = "none";
+        document.getElementById("btn1").style.display = "none";
+
+        var y = setInterval(function () {
+          document.getElementById("timer").innerHTML = x;
+          document.getElementById("timer-container").style.display = "block";
+          x = x - 1;
+          if (x <= -2) {
+            clearInterval(y);
+            document.getElementById("timer-container").style.display = "none";
+            document.getElementById("today").style.display = "block";
+            document.getElementById("stu-container").style.display = "block";
+            document.getElementById("btn2").style.display = "block";
+            document.getElementById("btn3").style.display = "block";
+
+            const names = [
+              "Raza Mohamed",
+              "Gowsigan",
+              "Sinthujan",
+              "Sagithan",
+              "Kajanath",
+              "Senthalini",
+              "Vithushika",
+              "Ajirthan",
+              "Sriram",
+              "Kajenthini",
+              "Dayani",
+              "Kamchijan",
+              "Aathavan",
+              "Sarmilan",
+              "Birunthan",
+              "Nirushan",
+              "Sakitha",
+              "Thiruchchenthooran",
+              "Abinathap",
+              "Banumathi",
+              "Saranja",
+              "Thamilarasi",
+              "Dilshan",
+              "Dilakshan",
+              "Kathurshan",
+            ];
+            let random = Math.floor(Math.random() * names.length);
+            const newRandom = random + 1;
+
+            if (newRandom != 6 && newRandom != 18 && newRandom != 23) {
+              document.getElementById("today").innerHTML =
+                "Today's Lucky Person is<br> 😄😂😝😝😂😄";
+              if (newRandom <= 9) {
+                document.getElementById("stuId").innerHTML =
+                  "ukistu0" + newRandom;
+              } else {
+                document.getElementById("stuId").innerHTML =
+                  "ukistu" + newRandom;
+              }
+              document.getElementById("stuName").innerHTML = names[random];
+              x = dTime;
+            } else {
+              x = -1;
+              btn1();
+            }
+          }
+        }, 1000);
+      }
+
+      function btn3() {
+        document.getElementById("today").style.display = "none";
+        document.getElementById("stu-container").style.display = "none";
+        document.getElementById("btn2").style.display = "none";
+        document.getElementById("btn3").style.display = "none";
+        document.getElementById("topic-head").style.display = "none";
+        document.getElementById("topic").style.display = "none";
+        document.getElementById("btn4").style.display = "none";
+
+        var x = 3;
+        var t = setInterval(function () {
+          document.getElementById("timer2").innerHTML = x;
+          document.getElementById("timer-container2").style.display = "block";
+          x = x - 1;
+          if (x <= -1) {
+            clearInterval(t);
+            var topics = ["Festival", "Trip", "friend"];
+            var topicRandom = Math.floor(Math.random() * 3);
+            console.log(topics[topicRandom]);
+
+            document.getElementById("topic-head").style.display = "block";
+            document.getElementById("topic").style.display = "block";
+
+            document.getElementById("timer-container2").style.display = "none";
+            document.getElementById("topic-head").innerHTML = "Your Topic is";
+            document.getElementById("topic").innerHTML = topics[topicRandom];
+            document.getElementById("btn4").style.display = "block";
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
